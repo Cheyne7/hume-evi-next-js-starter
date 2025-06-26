@@ -19,28 +19,27 @@ export default function ClientComponent({
       className="relative grow flex flex-col mx-auto w-full overflow-hidden h-[0px]"
     >
       <VoiceProvider
-        auth={{ type: "accessToken", value: accessToken }}
-        voiceId="5add9838-28df-40a6-9e07-f44c4e8854e3"
-        onMessage={() => {
-          if (timeout.current) {
-            window.clearTimeout(timeout.current);
-          }
-
-          timeout.current = window.setTimeout(() => {
-            if (ref.current) {
-              const scrollHeight = ref.current.scrollHeight;
-              ref.current.scrollTo({
-                top: scrollHeight,
-                behavior: "smooth",
-              });
-            }
-          }, 200);
-        }}
-      >
-        <Messages ref={ref} />
-        <Controls />
-        <StartCall />
-      </VoiceProvider>
+  auth={{ type: "accessToken", value: accessToken }}
+  voiceId="5add9038-28df-40a6-900c-2f736d008ab3"
+  onMessage={() => {
+    if (timeout.current) {
+      window.clearTimeout(timeout.current);
+    }
+    timeout.current = window.setTimeout(() => {
+      if (ref.current) {
+        const scrollHeight = ref.current.scrollHeight;
+        ref.current.scrollTo({
+          top: scrollHeight,
+          behavior: "smooth",
+        });
+      }
+    }, 200);
+  }}
+>
+  <Messages ref={ref} />
+  <Controls />
+  <StartCall />
+</VoiceProvider>
     </div>
   );
 }
