@@ -26,6 +26,7 @@ export default function ClientComponent({
       <VoiceProvider
         auth={{ type: "accessToken", value: accessToken }}
         configId={configId}
+voiceId="5add9838-28df-40a6-9e07-f44c4e8854e3"
         onMessage={() => {
           if (timeout.current) {
             window.clearTimeout(timeout.current);
