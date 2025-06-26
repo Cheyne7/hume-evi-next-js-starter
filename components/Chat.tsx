@@ -23,6 +23,31 @@ export default function ClientComponent({
         "relative grow flex flex-col mx-auto w-full overflow-hidden h-[0px]"
       }
     >
+      "use client";
+
+import { VoiceProvider } from "@humeai/voice-react";
+import Messages from "./Messages";
+import Controls from "./Controls";
+import StartCall from "./StartCall";
+import { ComponentRef, useRef } from "react";
+
+export default function ClientComponent({
+  accessToken,
+}: {
+  accessToken: string;
+}) {
+  const timeout = useRef<number | null>(null);
+  const ref = useRef<ComponentRef<typeof Messages> | null>(null);
+
+  // optional: use configId from environment variable
+  const configId = process.env['NEXT_PUBLIC_HUME_CONFIG_ID'];
+  
+  return (
+    <div
+      className={
+        "relative grow flex flex-col mx-auto w-full overflow-hidden h-[0px]"
+      }
+    >
       <VoiceProvider
   auth={{ type: "accessToken", value: accessToken }}
   voiceId="5add9838-28df-40a6-9e07-f44c4e8854e3"
